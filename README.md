@@ -1,6 +1,8 @@
 # MindDock
 
 A minimal, single-user web application for task tracking, work logging, note-taking, and collaborative sketching. Designed for personal productivity and self-reflection.
+<img width="1916" height="943" alt="image" src="https://github.com/user-attachments/assets/8bf12b86-1159-440f-9b69-e479233c1290" />
+
 
 ## Features
 
