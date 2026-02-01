@@ -1,0 +1,31 @@
+# Backend
+bin/
+obj/
+*.db
+*.db-journal
+minddock.db
+minddock.db-journal
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# IDE
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
