@@ -1,0 +1,38 @@
+# Multi-stage build for .NET 9 backend
+
+# Stage 1: Build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# Copy project files
+COPY ["Api.csproj", "./"]
+COPY ["Program.cs", "./"]
+COPY ["GlobalUsings.cs", "./"]
+COPY ["Controllers/", "Controllers/"]
+COPY ["Models/", "Models/"]
+COPY ["Data/", "Data/"]
+
+# Restore and build
+RUN dotnet restore "Api.csproj"
+RUN dotnet build "Api.csproj" -c Release -o /app/build
+
+# Stage 2: Publish
+FROM build AS publish
+RUN dotnet publish "Api.csproj" -c Release -o /app/publish
+
+# Stage 3: Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+
+# Copy published application
+COPY --from=publish /app/publish .
+
+# Expose port
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:5000/api/tasks || exit 1
+
+# Run application
+ENTRYPOINT ["dotnet", "Api.dll"]

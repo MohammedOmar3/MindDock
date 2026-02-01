@@ -1,0 +1,47 @@
+# Docker Ignore file
+# Excludes unnecessary files from Docker build context
+
+# Version control
+.git
+.gitignore
+
+# Dependencies
+node_modules
+npm-debug.log
+package-lock.json
+
+# Build artifacts
+bin/
+obj/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Database (handled by volumes)
+*.db
+*.db-shm
+*.db-wal
+
+# Temp files
+tmp/
+temp/

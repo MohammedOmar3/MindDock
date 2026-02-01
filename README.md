@@ -43,6 +43,24 @@ npm run dev
 
 The application will be available at `http://localhost:5173`
 
+## Docker
+
+Alternatively, run MindDock in containers using Docker Compose:
+
+```bash
+docker-compose up
+```
+
+Access the application at `http://localhost:3000`
+
+**Key files:**
+- `Dockerfile.backend` - .NET 9 API image
+- `frontend/Dockerfile` - React + Nginx image
+- `docker-compose.yml` - Local development setup
+- `frontend/nginx.conf` - Nginx reverse proxy configuration
+
+All data persists in the `minddock.db` volume.
+
 ## Usage
 
 ### Dashboard
